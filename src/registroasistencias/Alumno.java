@@ -2,6 +2,12 @@ package registroasistencias;
 import java.util.Date;
 import registroasistencias.Persona;
 
+/**
+ * La clase Alumno
+ * @author lapii2014
+ *
+ */
+
 public final class Alumno extends Persona {
 
 	private long legajo;
