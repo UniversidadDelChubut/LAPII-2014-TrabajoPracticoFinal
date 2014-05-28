@@ -66,9 +66,11 @@ CREATE TABLE profesor (
 );
 CREATE TABLE alumno (
 	documento  int NOT NULL,
-	legajo int NOT NULL,
+	legajo text,
 	CONSTRAINT pk_alumno
 		PRIMARY KEY (legajo),
+	CONSTRAINT chk_legajo_valido
+		CHECK (legajo ~ E'[A-Z]{3}\\d{3}')
 	CONSTRAINT fk_documento
 		FOREIGN KEY (documento)
 		REFERENCES persona (documento)	
