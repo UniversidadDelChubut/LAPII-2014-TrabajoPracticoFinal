@@ -75,7 +75,7 @@ CREATE TABLE alumno (
 	CONSTRAINT pk_alumno
 		PRIMARY KEY (legajo),
 	CONSTRAINT chk_legajo_valido
-		CHECK (legajo ~ E'[A-Z]{3}\\d{3}')
+		CHECK (legajo ~ E'[A-Z]{3}\\d{3}'),
 	CONSTRAINT fk_documento
 		FOREIGN KEY (documento)
 		REFERENCES persona (documento)	
@@ -118,7 +118,7 @@ CREATE TABLE clase (
 );
 CREATE TABLE asistencia (
 	comision int,
-	anio int,
+	alumno	text,
 	clase int,
 	id serial,
 	presente BOOLEAN,
@@ -127,7 +127,7 @@ CREATE TABLE asistencia (
 	CONSTRAINT pk_asistencia PRIMARY KEY(id),
 	CONSTRAINT fk_comision FOREIGN KEY(comision)
 	REFERENCES comision(id),
-	CONSTRAINT fk_anio FOREIGN KEY(anio)
+	CONSTRAINT fk_anio FOREIGN KEY(alumno)
 	REFERENCES alumno(legajo),
 	CONSTRAINT fk_clase FOREIGN KEY(clase)
 	REFERENCES clase(id)
