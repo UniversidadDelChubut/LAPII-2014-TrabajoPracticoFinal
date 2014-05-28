@@ -13,8 +13,10 @@ CREATE TABLE materia (
 	anio int,
 	cuatrimestre int,
 
-	CONSTRAINT pk_materia PRIMARY KEY (carrera,codigo),
-	CONSTRAINT fk_carrera FOREIGN KEY (carrera)
+
+	CONSTRAINT pk_materia PRIMARY KEY (carrera, codigo),
+	CONSTRAINT fk_materia FOREIGN KEY (carrera)
+
 	REFERENCES carrera (codigo)
 );
 CREATE TABLE cursada (
@@ -28,30 +30,69 @@ CREATE TABLE cursada (
 	
 	CONSTRAINT pk_cursada PRIMARY KEY (carrera, materia, anio),
 	CONSTRAINT fk_cursada FOREIGN KEY (carrera, materia)
-	REFERENCES materia (carrera,codigo)
+
+	REFERENCES materia (carrera, codigo)
 	
 );
-CREATE TABLE comison (
+CREATE TABLE comision (
 	id serial,
 	carrera text  NOT NULL,
 	materia text NOT NULL,
-	anio int,
+	anio int, 
 	numero int,
 
 	CONSTRAINT pk_comision PRIMARY KEY (id),
-	CONSTRAINT fk_cursada FOREIGN KEY (carrera, materia, anio)
-	REFERENCES cursada (carrera, materia, anio)
+	CONSTRAINT fk_comison FOREIGN KEY (carrera, materia, anio)
+	REFERENCES cursada (carrera, materia, anio),
+	CONSTRAINT unq_comision UNIQUE (carrera, materia, anio, numero)
+
 );
 CREATE TABLE persona (
-	
+	nombre text NOT NULL,
+	apellido text NOT NULL,
+	f_nacimiento date,
+	direccion text NOT NULL,
+	documento int not null,
+	CONSTRAINT pk_persona
+		PRIMARY KEY (documento),
+	CONSTRAINT chk_doc_valido
+		CHECK (documento between 10000000 and 99999999 )
 );
 CREATE TABLE profesor (
-	dni int PRIMARY KEY
+
+	documento int NOT NULL,
+	CONSTRAINT pk_profesor
+		PRIMARY KEY (documento),
+	CONSTRAINT fk_documento
+		FOREIGN KEY (documento)
+		REFERENCES persona (documento)
+
+
 );
 CREATE TABLE alumno (
-	legajo int PRIMARY KEY
+	documento  int NOT NULL,
+	legajo int NOT NULL,
+	CONSTRAINT pk_alumno
+		PRIMARY KEY (legajo),
+	CONSTRAINT fk_documento
+		FOREIGN KEY (documento)
+		REFERENCES persona (documento)	
+
 );
 CREATE TABLE prof_comision (
+	profesor int NOt NULL,
+	comision serial NOT NULL,
+	f_desde date NOT NULL,
+	f_hasta date NOT NULL,
+
+	CONSTRAINT pk_prof_comision
+		PRIMARY KEY (profesor, comision, f_desde),
+	CONSTRAINT fk_profesor
+		FOREIGN KEY (profesor)
+		REFERENCES profesor (documento),
+	CONSTRAINT fk_comision
+		FOREIGN KEY (comision)
+		REFERENCES comision (id)	
 
 );
 CREATE TABLE clase (
@@ -68,8 +109,8 @@ CREATE TABLE clase (
 	hora_salida_profesor time,
 	
 	CONSTRAINT pk_clase PRIMARY KEY(id),
-	CONSTRAINT fk_comison FOREIGN KEY(comision)
-	REFERENCES comison(id),
+	CONSTRAINT fk_comision FOREIGN KEY(comision)
+	REFERENCES comision(id),
 	CONSTRAINT fk_recuperatoria_de FOREIGN KEY(recuperatoria_de)
 	REFERENCES clase(id)
 );
@@ -83,7 +124,7 @@ CREATE TABLE asistencia (
 
 	CONSTRAINT pk_asistencia PRIMARY KEY(id),
 	CONSTRAINT fk_comision FOREIGN KEY(comision)
-	REFERENCES comison(id),
+	REFERENCES comision(id),
 	CONSTRAINT fk_anio FOREIGN KEY(anio)
 	REFERENCES alumno(legajo),
 	CONSTRAINT fk_clase FOREIGN KEY(clase)
