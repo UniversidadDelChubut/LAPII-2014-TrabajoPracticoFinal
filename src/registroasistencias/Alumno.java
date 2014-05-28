@@ -1,6 +1,13 @@
 package registroasistencias;
 import java.util.Date;
+
 import registroasistencias.Persona;
+
+/**
+ * La clase Alumno
+ * @author lapii2014
+ *
+ */
 
 public final class Alumno extends Persona {
 
@@ -15,6 +22,32 @@ public final class Alumno extends Persona {
 		return this.legajo;
 		
 		
+	}
+	
+	public void getPorcentajeAsistencia(Cursada cursada){
+		
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (legajo ^ (legajo >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Alumno))
+			return false;
+		Alumno other = (Alumno) obj;
+		if (legajo != other.legajo)
+			return false;
+		return true;
 	}
 	
 	

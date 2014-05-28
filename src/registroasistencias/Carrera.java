@@ -2,6 +2,13 @@ package registroasistencias;
 
 import java.util.List;
 
+
+/**
+ * Represnta una carrera de la Universidad
+ * 
+ * @author santiago
+ *
+ */
 public class Carrera {
 
 	private String id;
