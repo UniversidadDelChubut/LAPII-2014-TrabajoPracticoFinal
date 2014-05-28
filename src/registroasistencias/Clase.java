@@ -76,6 +76,9 @@ class Clase{
         return this.comision;
     }
     
+    public List<Asistencia> getAsistencias(){
+    	return this.asistencia;
+    }
     	
 }
 
