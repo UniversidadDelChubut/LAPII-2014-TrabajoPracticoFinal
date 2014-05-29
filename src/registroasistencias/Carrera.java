@@ -1,5 +1,6 @@
 package registroasistencias;
 
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -13,7 +14,29 @@ public class Carrera {
 
 	private String id;
 	private String nombre;
-	private List<Materia> materia;
+	private List<Materia> materias;
+	
+	
+	public static List <Carrera> getCarreras(){
+		return DataProvider.getDataProvider().getCarreras();
+	}
+	
+	public List<Materia> getMaterias() {
+		if (this.materias != null) {
+			return materias;
+		}
+		
+		this.materias = new LinkedList<Materia>();
+		DataProvider dp = DataProvider.getDataProvider();
+		
+		for (Materia materia: dp.getMaterias() ){
+			if (materia.getCarrera().equals(this)){
+				this.materias.add(materia);
+			}
+		}
+		return materias;
+
+	}
 
 	public String getId() {
 		return id;
@@ -32,6 +55,5 @@ public class Carrera {
 		
 		this.id=id;
 		this.nombre=nombre;
-		
 	}
 }
