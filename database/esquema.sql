@@ -133,4 +133,68 @@ CREATE TABLE asistencia (
 	REFERENCES clase(id)
 );
 
+
+
+
+
+
+
+
+
+
+INSERT INTO carrera VALUES ('SFW', 'Tenicatura en Software');
+INSERT INTO carrera VALUES ('ENF', 'Tenicatura en Enferemería');
+INSERT INTO carrera VALUES ('RED', 'Tecnicatura en Redes');
+
+
+INSERT INTO materia VALUES ('SFW', '10', 'Bases de Datos I', 2, 1);
+INSERT INTO materia VALUES ('SFW', '11', 'Laboratorio Avanzado de Programación', 2, 1);
+INSERT INTO materia VALUES ('ENF', '11', 'Nutrición', 1, 2);
+INSERT INTO materia VALUES ('ENF', '3', 'Anatomia', 1, 1);
+INSERT INTO materia VALUES ('RED', '3', 'Redes I', 1, 2);
+
+
+
+INSERT INTO persona VALUES ('Iuliano', 'Gelvez', '1985-08-22', 'Florentino Ameghino 251', 31504948);
+INSERT INTO persona VALUES ('Rupert', 'Huenchuquir', '1988-07-22', 'Florecio Raminnetti 851', 26568987);
+INSERT INTO persona VALUES ('Fernando', 'Valdebenito', '1992-04-07', 'Cannito 425', 36650929);
+INSERT INTO persona VALUES ('Javier', 'Yañez', '1984-06-15', 'Av. Lista 543', 23456789);
+INSERT INTO persona VALUES ('Lexa', 'Gomez', '1960-12-30', 'Av. Camero 58', 98765436);
+INSERT INTO persona VALUES ('Pablo', 'Carro', '1980-06-20', 'parque mitre 22', 20555664);
+INSERT INTO persona VALUES ('Rupertinski', 'Galadrianno', '1988-01-05', 'Alavuelta Delaezquina 871', 48789654);
+INSERT INTO persona VALUES ('Moises', 'Vilca', '2060-10-10', '25 de mayo 222', 20670089);
+INSERT INTO persona VALUES ('Lahermenegilda', 'Delpueblo', '1988-01-09', 'Vivalaseñora 845', 32654987);
+INSERT INTO persona VALUES ('Pancrasio', 'Garcia', '1945-05-01', 'Callecita 123', 12428953);
+INSERT INTO persona VALUES ('Tito', 'Lopez', '2000-11-04', 'acapulco 244', 20693300);
+INSERT INTO persona VALUES ('Ximena', 'Gutierres', '1987-01-17', 'Av. Coronel 1234', 45678900);
+INSERT INTO persona VALUES ('Dario', 'Guzman', '1989-01-01', 'Av. Manuel 90', 35456789);
+INSERT INTO persona VALUES ('Pedro', 'Sanchez', '1987-01-15', 'torraco 445', 20995500);
+INSERT INTO persona VALUES ('Especulapio', 'Nuñez', '1985-06-17', '25 de mayo 658', 28456982);
+
+
+
+INSERT INTO profesor VALUES (35456789);
+INSERT INTO profesor VALUES (98765436);
+INSERT INTO profesor VALUES (12428953);
+INSERT INTO profesor VALUES (48789654);
+INSERT INTO profesor VALUES (20693300);
+INSERT INTO profesor VALUES (32654987);
+INSERT INTO profesor VALUES (20995500);
+
+
+
+INSERT INTO alumno VALUES (31504948, 'POO986');
+INSERT INTO alumno VALUES (26568987, 'LOI569');
+INSERT INTO alumno VALUES (36650929, 'PMR325');
+INSERT INTO alumno VALUES (23456789, 'DFR456');
+INSERT INTO alumno VALUES (45678900, 'ERT123');
+INSERT INTO alumno VALUES (28456982, 'GOY589');
+INSERT INTO alumno VALUES (20670089, 'HTP889');
+INSERT INTO alumno VALUES (20555664, 'TTN188');
+
+
+
+
+
+
 ROLLBACK;
