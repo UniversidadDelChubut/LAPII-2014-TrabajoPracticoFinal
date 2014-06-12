@@ -2,6 +2,11 @@ package registroasistencias;
 
 public class Materia {
 	
+	public static final String PRIMER_CUARIMESTRE = "1C";
+	public static final String SEGUNDO_CUARIMESTRE = "2C";
+	public static final String ANUAL = "A";
+	
+	
 	private int numero;
 	private String cuatrimestre;
 	private String nombre;

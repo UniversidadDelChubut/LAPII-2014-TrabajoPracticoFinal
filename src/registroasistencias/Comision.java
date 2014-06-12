@@ -3,7 +3,7 @@ package registroasistencias;
 import java.util.LinkedList;
 
 public class Comision {
-
+    private final int NRO_MAX_ALUMNO = 30;
 	private Cursada cursada;
 	private int numero;
 	private List <Alumno> alumnos = new LinkedList<Alumno>(); 
@@ -34,7 +34,7 @@ public class Comision {
 
 	public void agregarAlumno(Alumno alumno){ 
 	   
-	    if (alumnos.size() <= 30){
+	    if (alumnos.size() <= NRO_MAX_ALUM){
 	    	alumnos.add(alumno);
 	    }
 	    

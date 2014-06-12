@@ -12,6 +12,7 @@ import registroasistencias.Persona;
 public final class Alumno extends Persona {
 
 	private long legajo;
+	private float porcentajeAsistencia;
 	
 	public Alumno(long legajo, String apellido, String nombre, String calle,int alturaCalle, Date nacimiento, long dni){
 		super(nombre, apellido, calle, alturaCalle, nacimiento, dni);
@@ -24,8 +25,8 @@ public final class Alumno extends Persona {
 		
 	}
 	
-	public void getPorcentajeAsistencia(Cursada cursada){
-		
+	public void getPorcentajeAsistencia(Comision comision){
+		this.porcentajeAsistencia= comision.getClases().
 	}
 
 	@Override
